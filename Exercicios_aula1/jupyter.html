@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="UTF-8">
+        <title>Jupiterweb</title>
+        <style>
+            .logo-usp {
+                margin-left: 1.5vw;
+                margin-right: 1.5vh;
+            }
+
+            .listra-laranja {
+                background-color: #fcb421;
+                height: 0.5vw;
+                width: 100%;
+            }
+
+            .listra-azul-claro {
+                background-color: #64c4d2;
+                height: 0.5vw;
+                width: 100%;
+            }
+
+            .listra-azul-escuro {
+                background-color: #1094ab;
+                height: 1vw;
+                width: 100%;
+            }
+
+            .menu-container {
+                border: 1px solid gray;
+                margin-top: 2.5vh;
+                width: 250px;
+                margin-bottom: 0.5vh;
+            }
+
+            .menu-titulo {
+                background-color: #cccccc;
+                color: white;
+                font-weight: bold;
+                padding: 10px 15px;
+                margin: 0;
+                font-size: 14px;
+            }
+
+            .menu-lista {
+                list-style-type: none; 
+                margin: 0;
+                padding: 0;
+            }
+
+            .menu-opcao {
+                display: block; 
+                padding: 12px 15px;
+                text-decoration: none; 
+                color: black; 
+                font-size: 14px;
+            }
+
+            .menu-opcao:hover {
+                background-color: #f0f0f0;
+            }
+
+            .container-principal {
+                display: flex; 
+                gap: 20px; 
+                align-items: flex-start; 
+                padding: 20px; 
+            }
+
+            .coluna-esquerda {
+                width: 250px; 
+                flex-shrink: 0; 
+            }
+
+            .coluna-direita {
+                flex-grow: 1; 
+            }
+
+            .login-header {
+                border-bottom: 1px solid #ccc; 
+                margin-bottom: 20px;
+                padding-bottom: 5px;
+            }
+
+            .login-header h3 {
+                margin: 0;
+                font-size: 14px;
+                font-weight: normal;
+            }
+
+            .form-login {
+                display: flex;
+                flex-direction: column;
+                align-items: center; 
+                gap: 15px; 
+            }
+
+            .linha-form {
+                display: flex;
+                justify-content: flex-end; 
+                width: 300px;
+            }
+
+            .linha-form label {
+                width: 80px; 
+                text-align: right;
+                margin-right: 10px;
+            }
+
+            .linha-form input {
+                flex-grow: 1; 
+            }
+
+            .imagem-abaixo-forms {
+                text-align: center;
+                margin-top: 50px; 
+                opacity: 80%;
+            }
+
+            .imagem-abaixo-forms img {
+                max-width: 100%;
+                height: auto;
+            }
+
+            .coluna-imagem {
+                width: 350px; 
+                height: calc(100vh - 150px); 
+                flex-shrink: 0;
+            }
+
+            .coluna-imagem img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover; 
+                border-radius: 4px; 
+            }
+
+            @media (max-width: 768px) {
+                .container-principal {
+                    flex-direction: column; 
+                    align-items: center; 
+                    padding: 10px;
+                }
+
+                .coluna-esquerda {
+                    width: 100%; 
+                    max-width: 400px; 
+                    margin-bottom: 20px;
+                }
+
+                .menu-container {
+                    width: 100%; 
+                }
+
+                .coluna-direita {
+                    width: 100%;
+                    max-width: 400px;
+                }
+
+                .linha-form {
+                    width: 100%; 
+                    justify-content: center;
+                }
+
+                .coluna-imagem {
+                    width: 100%;
+                    max-width: 400px;
+                    height: 300px; 
+                    margin-top: 30px;
+                }
+            }
+
+        </style>
+    </head>
+
+    <body>
+
+        <header>
+            <img class="logo-usp" src="https://uspdigital.usp.br/comumwebdev/imagens/cabecalho/usp-logo.png" width="150px">
+            <img src="usp-logo-texto.png" width="300px">
+        </header>
+
+        <div>
+            <div class="listra-laranja"></div>
+            <div class="listra-azul-claro"></div>
+            <div class="listra-azul-escuro"></div>
+        </div>
+
+        <div class="container-principal">
+
+            <div class="coluna-esquerda">
+
+                <div class="menu-container">
+                    <h5 class="menu-titulo">Público</h5>
+                    <ul class="menu-lista">
+                        <li><a href="#" class="menu-opcao">Calendário Escolar</a></li>
+                        <li><a href="#" class="menu-opcao">Cursos de ingresso</a></li>
+                        <li><a href="#" class="menu-opcao">Disciplina</a></li>
+                        <li><a href="#" class="menu-opcao">Editais</a></li>
+                        <li><a href="#" class="menu-opcao">FAQ</a></li>
+                    </ul>
+                </div>
+
+                <div class="menu-container">
+                    <h5 class="menu-titulo">Acesso Restrito</h5>
+                    <ul class="menu-lista">
+                        <li><a href="#" class="menu-opcao">Entrar</a></li>
+                        <li><a href="#" class="menu-opcao">Esqueci a Senha</a></li>
+                        <li><a href="#" class="menu-opcao">Primeiro Acesso</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="coluna-direita">
+
+                <div class="login-header">
+                    <h3>Login</h3>
+                </div>
+
+                <form class="form-login">
+                    <div class="linha-form">
+                        <label for="usuario">Usuário:</label>
+                        <input type="text" id="usuario" name="usuario">
+                    </div>
+
+                    <div class="linha-form">
+                        <label for="senha">Senha:</label>
+                        <input type="password" id="senha" name="senha">
+                    </div>
+
+                    <button type="button">Entrar</button>
+                </form>    
+
+                <div class="imagem-abaixo-forms">
+                    <img src="USP-Brasão.jpg" alt="Brasao da Usp" width="300vp">
+                </div>
+
+            </div>
+
+            <div class="coluna-imagem">
+                    <img src="paisagem1.jpg" alt="Brasao da Usp" width="300vp">
+                </div>
+
+        </div>
+
+    </body>
+</html>
