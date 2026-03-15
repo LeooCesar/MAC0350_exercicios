@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Página de Login</title>
+</head>
+<body>
+    <h1>Entrar na sua conta</h1>
+    
+    <form>
+        <label>Nome:</label><br>
+        <input type="text" id="nome" placeholder="Digite seu nome"><br><br>
+
+        <label>Senha:</label><br>
+        <input type="password" id="senha" placeholder="Sua senha"><br><br>
+
+        <button type="button" onclick="logarUsuario()">Entrar</button>
+    </form>
+
+    <script>
+        async function logarUsuario() {
+            const dados = {
+                nome: document.getElementById('nome').value,
+                senha: document.getElementById('senha').value
+            };
+
+            const resposta = await fetch('/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(dados)
+            });
+            
+            if(resposta.ok){
+                const resultado = await resposta.json();
+                alert(resultado.mensagem);
+            }
+            else{
+                alert("Nome e/ou senha incorretos!");
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Meu Perfil</title>
+</head>
+<body>
+    <h1>Bem-vindo {{ user.nome }}!</h1>
+    
+    <h3>Aqui estão suas informações:</h3>
+    <ul>
+        <li><strong>Nome:</strong> {{ user.nome }}</li>
+        <li><strong>Sua Bio:</strong> {{ user.bio }}</li>
+    </ul>
+
+    <p><a href="/login">Sair (Voltar pro Login)</a></p>
+</body>
+</html>
