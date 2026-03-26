@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercícios HTMX</title>
+    <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+    <style>
+        .ativa { font-weight: bold; text-decoration: underline; color: #ff6600; }
+        nav { margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid #ccc; }
+        button { margin-right: 10px; padding: 5px 10px; cursor: pointer; }
+    </style>
+</head>
+<body hx-get="/proxima-aba" 
+      hx-trigger="keydown[shiftKey && event.getModifierState('AltGraph') && code=='KeyP'] from:window"
+      hx-target="#conteudo-aba">
+
+    <h1>Meu Site FastAPI + HTMX</h1>
+
+    {% include 'menu.html' %}
+
+    <main id="conteudo-aba" 
+          hx-get="/abas/{{ aba_ativa }}" 
+          hx-trigger="load">
+          </main>
+
+</body>
+</html>

@@ -1,0 +1,20 @@
+<div>
+    <h2>Aba de Curtidas</h2>
+    
+    <p>
+        Contador de curtidas: <strong id="contador-likes">{{ likes_count }}</strong>
+    </p>
+    
+    <button hx-post="/curtir" 
+            hx-target="#contador-likes">
+        Curtir!
+    </button>
+
+    <button hx-delete="/curtir" 
+            hx-target="#contador-likes" 
+            hx-confirm="Você tem certeza que deseja zerar todas as curtidas?">
+        Zerar Curtidas
+    </button>
+</div>
+
+{% include 'menu.html' %}

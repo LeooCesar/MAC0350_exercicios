@@ -1,0 +1,12 @@
+<nav id="menu-abas" hx-swap-oob="true">
+    <button class="{{ 'ativa' if aba_ativa == 'curtidas' else '' }}" 
+            hx-get="/abas/curtidas" hx-target="#conteudo-aba">Curtidas</button>
+            
+    <button class="{{ 'ativa' if aba_ativa == 'jupiter' else '' }}" 
+            hx-get="/abas/jupiter" hx-target="#conteudo-aba">Júpiter</button>
+            
+    <button class="{{ 'ativa' if aba_ativa == 'professor' else '' }}" 
+            hx-get="/abas/professor" hx-target="#conteudo-aba">Professor</button>
+            
+    <br><small><em>Dica: Pressione <b>Shift + Alt + P</b> para alternar as abas rapidamente!</em></small>
+</nav>
