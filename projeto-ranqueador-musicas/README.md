@@ -14,6 +14,6 @@ In this app, users can:
 
 ## Tech Stack
 
-* **Frontend:** HTML, CSS (Custom Responsive Dark Theme), HTMX, Jinja2 Templates (Zero custom JavaScript required!)
+* **Frontend:** HTML, CSS (Custom Responsive Dark Theme), HTMX, Jinja2 Templates 
 * **Backend:** Python, FastAPI
 * **Database:** SQLite (via SQLAlchemy)
