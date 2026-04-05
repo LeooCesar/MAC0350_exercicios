@@ -1,0 +1,136 @@
+body {
+    background: radial-gradient(circle at top, #1e1e2e 0%, #11111b 100%);
+    color: #cdd6f4;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    min-height: 100vh;
+}
+
+.app-container {
+    max-width: 750px;
+    margin: 0 auto;
+    padding-bottom: 50px;
+}
+
+button {
+    padding: 10px 15px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    transition: opacity 0.2s;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+/* Classes Específicas de Botões */
+.btn-laranja {
+    background-color: #fab387;
+    color: #11111b;
+    font-size: 1.1em;
+    width: 100%;
+}
+
+.btn-vermelho {
+    background-color: #f38ba8;
+    color: #11111b;
+    padding: 5px 12px;
+    font-size: 0.8em;
+}
+
+input[type="text"], input[type="number"] {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 8px;
+    margin-top: 5px;
+    border-radius: 4px;
+    border: 1px solid #45475a;
+    background-color: #181825;
+    color: #cdd6f4;
+}
+
+/* Cards de Partida*/
+.card-partida {
+    background-color: #1e1e2e;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    list-style-type: none;
+    border: 1px solid #45475a;
+}
+
+.cabecalho-partida {
+    font-size: 0.85em;
+    color: #a6adc8;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.container-linhas {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.dupla-linha {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nomes-dupla {
+    flex: 1;
+    line-height: 1.4;
+}
+
+.nome-principal {
+    color: #cdd6f4;
+    font-weight: bold;
+}
+
+.nome-parceiro {
+    color: #a6adc8;
+    font-size: 0.9em;
+    font-weight: bold;
+}
+
+.pontuacao-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.placar-geral {
+    font-size: 1.3em;
+    font-weight: bold;
+    width: 25px;
+    text-align: center;
+}
+
+.linha-divisoria {
+    width: 2px;
+    height: 25px;
+    background-color: #45475a;
+    border-radius: 2px;
+}
+
+.sets-container {
+    display: flex;
+    gap: 12px;
+    font-size: 1.1em;
+    font-weight: bold;
+}
+
+.ponto-set {
+    width: 25px;
+    text-align: center;
+}
+
+.botao-excluir-container {
+    text-align: right;
+    margin-top: 20px;
+}

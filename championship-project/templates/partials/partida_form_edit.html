@@ -1,0 +1,52 @@
+<li id="partida-{{ partida.id }}" class="card-partida" style="border-color: #fab387;">
+    
+    <form hx-put="/partidas/{{ partida.id }}" hx-target="#partida-{{ partida.id }}" hx-swap="outerHTML">
+        
+        <input type="hidden" name="campeonato_id" value="{{ partida.championship_id }}">
+        
+        <div style="display: flex; gap: 10px;">
+            <input type="text" name="category" value="{{ partida.category }}" required>
+            <input type="text" name="stage" value="{{ partida.stage }}" required>
+        </div>
+
+        <div class="sets-container" style="margin-top: 15px; flex-wrap: wrap;">
+            <!-- Set 1 -->
+            <div style="background-color: #11111b; padding: 10px; border-radius: 6px;">
+                <small style="color: #a6adc8;">1º Set</small><br>
+                <input type="number" name="our_set1" value="{{ set1.our_points if set1 else '' }}" style="width: 50px;" required>
+                <span style="color: #6c7086;"> x </span>
+                <input type="number" name="opp_set1" value="{{ set1.opponent_points if set1 else '' }}" style="width: 50px;" required>
+            </div>
+
+            <!-- Set 2 -->
+            <div style="background-color: #11111b; padding: 10px; border-radius: 6px;">
+                <small style="color: #a6adc8;">2º Set</small><br>
+                <input type="number" name="our_set2" value="{{ set2.our_points if set2 else '' }}" style="width: 50px;" required>
+                <span style="color: #6c7086;"> x </span>
+                <input type="number" name="opp_set2" value="{{ set2.opponent_points if set2 else '' }}" style="width: 50px;" required>
+            </div>
+
+            <!-- Set 3 -->
+            <div style="background-color: #11111b; padding: 10px; border-radius: 6px;">
+                <small style="color: #a6adc8;">3º Set</small><br>
+                <input type="number" name="our_set3" value="{{ set3.our_points if set3 else '' }}" style="width: 50px;">
+                <span style="color: #6c7086;"> x </span>
+                <input type="number" name="opp_set3" value="{{ set3.opponent_points if set3 else '' }}" style="width: 50px;">
+            </div>
+        </div>
+
+        <div style="display: flex; gap: 10px; margin-top: 15px;">
+            <input type="text" name="partner" value="{{ partida.partner if partida.partner else '' }}" placeholder="Sua Dupla">
+            <input type="text" name="opponents" value="{{ partida.opponents }}" required>
+        </div>
+
+        <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 15px;">
+            <button type="button" style="background-color: transparent; color: #a6adc8; border: 1px solid #a6adc8;" hx-get="/partidas/{{ partida.id }}" hx-target="#partida-{{ partida.id }}" hx-swap="outerHTML">
+                Cancelar
+            </button>
+            <button type="submit" class="btn-laranja" style="width: auto;">
+                💾 Salvar Alterações
+            </button>
+        </div>
+    </form>
+</li>

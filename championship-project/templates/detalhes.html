@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <a href="/" style="color: #89b4fa; text-decoration: none;">⬅ Voltar para Torneios</a>
+    
+    <br><br>
+    
+    <h2>🏆 {{ campeonato.name }}</h2>
+    
+    <hr>
+
+    <!-- Estatísticas -->
+    <div style="background-color: #181825; padding: 20px; border-radius: 8px; border: 1px solid #45475a; margin-bottom: 30px; display: flex; justify-content: space-around; text-align: center; flex-wrap: wrap; gap: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.3);">
+        
+        <!-- Total de Partidas -->
+        <div>
+            <div style="color: #a6adc8; font-size: 0.8em; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px;">Partidas</div>
+            <div style="font-size: 1.8em; font-weight: bold; color: #cdd6f4;">{{ stats.total }}</div>
+        </div>
+        
+        <!-- Vitórias / Derrotas -->
+        <div>
+            <div style="color: #a6adc8; font-size: 0.8em; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px;">Vitórias / Derrotas</div>
+            <div style="font-size: 1.8em; font-weight: bold;">
+                <span style="color: #a6e3a1;">{{ stats.vitorias }}</span>
+                <span style="color: #6c7086; font-size: 0.7em; margin: 0 3px;">V</span>
+                <span style="color: #45475a;">-</span>
+                <span style="color: #f38ba8;">{{ stats.derrotas }}</span>
+                <span style="color: #6c7086; font-size: 0.7em; margin: 0 3px;">D</span>
+            </div>
+        </div>
+        
+        <!-- Winrate -->
+        <div>
+            <div style="color: #a6adc8; font-size: 0.8em; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px;">Aproveitamento</div>
+            <div style="font-size: 1.8em; font-weight: bold; color: #89b4fa;">{{ stats.aproveitamento }}</div>
+        </div>
+        
+        <!-- Saldo de Pontos -->
+        <div>
+            <div style="color: #a6adc8; font-size: 0.8em; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px;">Saldo de Pontos</div>
+            <div style="font-size: 1.8em; font-weight: bold; color: {% if stats.saldo > 0 %}#a6e3a1{% elif stats.saldo < 0 %}#f38ba8{% else %}#cdd6f4{% endif %};">
+                {% if stats.saldo > 0 %}+{% endif %}{{ stats.saldo }}
+            </div>
+        </div>
+
+    </div>
+
+    <h3>Partidas Disputadas</h3>
+
+    <ul id="lista-partidas">
+        {% for partida in campeonato.matches %}
+            {% include "partials/partida_item.html" %}
+        {% endfor %}
+    </ul>
+    
+    <div style="margin-top: 30px; padding: 15px; border: 1px solid #45475a; border-radius: 8px;">
+        <h4>➕ Registrar Nova Partida</h4>
+        
+        <form hx-post="/campeonatos/{{campeonato.id}}/partidas" 
+            hx-target="#lista-partidas" 
+            hx-swap="beforeend"
+            hx-on::after-request="this.reset()">
+
+            <label>Categoria e Fase:</label><br>
+            <input type="text" name="category" placeholder="Ex: Dupla Mista B ou DXB" required>
+            <input type="text" name="stage" placeholder="Ex: Final ou Fase de Grupos" required>
+
+            <br><br>
+
+            <label>Placar por Set:</label><br>
+            <div style="display: flex; gap: 15px; margin-bottom: 15px; flex-wrap: wrap;">
+
+                <!-- SET 1 -->
+                <div style="background-color: #11111b; padding: 10px; border-radius: 6px;">
+                    <small style="color: #a6adc8;">1º Set</small><br>
+                    <input type="number" name="our_set1" placeholder="Nós" min="0" required style="width: 50px;">
+                    <span style="color: #6c7086;"> x </span>
+                    <input type="number" name="opp_set1" placeholder="Eles" min="0" required style="width: 50px;">
+                </div>
+
+                <!-- SET 2 -->
+                <div style="background-color: #11111b; padding: 10px; border-radius: 6px;">
+                    <small style="color: #a6adc8;">2º Set</small><br>
+                    <input type="number" name="our_set2" placeholder="Nós" min="0" required style="width: 50px;">
+                    <span style="color: #6c7086;"> x </span>
+                    <input type="number" name="opp_set2" placeholder="Eles" min="0" required style="width: 50px;">
+                </div>
+
+                <!-- SET 3 (Opcional) -->
+                <div style="background-color: #11111b; padding: 10px; border-radius: 6px;">
+                    <small style="color: #a6adc8;">3º Set</small><br>
+                    <input type="number" name="our_set3" placeholder="Nós" min="0" style="width: 50px;">
+                    <span style="color: #6c7086;"> x </span>
+                    <input type="number" name="opp_set3" placeholder="Eles" min="0" style="width: 50px;">
+                </div>
+
+            </div>
+
+            <br><br>
+
+            <label>Jogadores:</label><br>
+            <input type="text" name="partner" placeholder="Sua Dupla (deixe em branco se for Simples)">
+            <input type="text" name="opponents" placeholder="Oponente1 / Oponente2" required>
+
+            <br><br>
+
+            <button type="submit">Salvar Partida</button>
+        </form>
+    </div>
+
+{% endblock %}

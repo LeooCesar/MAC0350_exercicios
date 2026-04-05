@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+    
+    <h1 style="color: #fab387; text-align: center; margin-bottom: 40px;">
+        🏸 Meus Torneios
+    </h1>
+
+    <ul id="lista-campeonatos" style="padding: 0;">
+        {% for campeonato in campeonatos %}
+            {% include "partials/campeonato_item.html" %}
+        {% endfor %}
+    </ul>
+    
+    <div style="margin-top: 40px; padding: 20px; border: 1px solid #45475a; border-radius: 8px; background-color: #181825;">
+        <h4 style="margin-top: 0;">➕ Novo Torneio</h4>
+        
+        <form hx-post="/campeonatos" hx-target="#lista-campeonatos" hx-swap="beforeend" hx-on::after-request="this.reset()">
+
+            <label style="color: #a6adc8; font-size: 0.9em;">Nome do Torneio:</label><br>
+            <input type="text" name="name" placeholder="Ex: Terceira Copa São Caetano" required>
+
+            <br><br>
+
+            <button type="submit" style="background-color: #fab387; color: #11111b; width: 100%;">
+                Adicionar Torneio
+            </button>
+        </form>
+    </div>
+
+{% endblock %}

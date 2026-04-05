@@ -1,0 +1,91 @@
+<li id="partida-{{ partida.id }}" class="card-partida">
+    
+    <div class="cabecalho-partida">
+        🏸 {{ partida.category }} • {{ partida.stage }}
+    </div>
+    
+    <div class="container-linhas">
+        
+        <!-- Dupla 1 (Nós) -->
+        <div class="dupla-linha">
+            
+            <div class="nomes-dupla">
+                <span class="nome-principal">L. César</span>
+                {% if partida.partner %}
+                    <br><span class="nome-parceiro">{{ partida.partner }}</span>
+                {% endif %}
+            </div>
+            
+            <div class="pontuacao-container">
+                <!-- Placar Geral (Sets) -->
+                <div class="placar-geral" style="color: {% if partida.our_score > partida.opponent_score %}#a6e3a1{% else %}#cdd6f4{% endif %};">
+                    {{ partida.our_score }}
+                </div>
+                
+                <div class="linha-divisoria"></div>
+                
+                <!-- Parciais de cada Set -->
+                <div class="sets-container">
+                    {% for parcial in partida.sets %}
+                        <div class="ponto-set" style="color: {% if parcial.our_points > parcial.opponent_points %}#a6e3a1{% else %}#6c7086{% endif %};">
+                            {{ parcial.our_points }}
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        <!-- Dupla 2 (Eles) -->
+        <div class="dupla-linha">
+            
+            <div class="nomes-dupla">
+                {% set opponents_lista = partida.opponents.split('/') %}
+                <span class="nome-principal">{{ opponents_lista[0].strip() }}</span>
+                
+                {% if opponents_lista|length > 1 %}
+                    <br><span class="nome-parceiro">{{ opponents_lista[1].strip() }}</span>
+                {% endif %}
+            </div>
+            
+            <div class="pontuacao-container">
+                <!-- Placar Geral (Sets) -->
+                <div class="placar-geral" style="color: {% if partida.opponent_score > partida.our_score %}#f38ba8{% else %}#cdd6f4{% endif %};">
+                    {{ partida.opponent_score }}
+                </div>
+                
+                <div class="linha-divisoria"></div>
+                
+                <!-- Parciais de cada Set -->
+                <div class="sets-container">
+                    {% for parcial in partida.sets %}
+                        <div class="ponto-set" style="color: {% if parcial.opponent_points > parcial.our_points %}#f38ba8{% else %}#6c7086{% endif %};">
+                            {{ parcial.opponent_points }}
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="botao-excluir-container" style="display: flex; justify-content: flex-end; gap: 10px;">
+        <!-- Editar -->
+        <button 
+            class="btn-laranja" style="width: auto; padding: 5px 12px; font-size: 0.8em;"
+            hx-get="/partidas/{{ partida.id }}/editar" 
+            hx-target="#partida-{{ partida.id }}" 
+            hx-swap="outerHTML">
+            ✏️ Editar
+        </button>
+
+        <!-- Excluir -->
+        <button 
+            class="btn-vermelho"
+            hx-delete="/partidas/{{ partida.id }}" 
+            hx-target="#partida-{{ partida.id }}" 
+            hx-swap="outerHTML"
+            hx-confirm="Tem certeza que deseja apagar esta partida?">
+            🗑️ Excluir
+        </button>
+    </div>
+</li>

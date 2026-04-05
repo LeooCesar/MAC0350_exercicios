@@ -1,0 +1,13 @@
+<li id="campeonato-{{ campeonato.id }}">
+    <a href="/campeonatos/{{ campeonato.id }}">
+        <strong>{{ campeonato.name }}</strong>
+    </a>
+    
+    <button 
+        hx-delete="/campeonatos/{{ campeonato.id }}" 
+        hx-target="#campeonato-{{ campeonato.id }}" 
+        hx-swap="outerHTML"
+        hx-confirm="Tem certeza que deseja excluir este campeonato?">
+        Excluir
+    </button>
+</li>
