@@ -96,6 +96,7 @@ def detalhes_campeonato(request: Request, campeonato_id: int, db: Session = Depe
 def adicionar_partida(
     request: Request,
     campeonato_id: int,
+    player_name: str = Form(...),
     category: str = Form(...),
     stage: str = Form(...),
     our_set1: int = Form(...),
@@ -124,6 +125,7 @@ def adicionar_partida(
 
     nova_partida = models.Match(
         championship_id=campeonato_id,
+        player_name=player_name,
         category=category,
         stage=stage,
         our_score=our_total,
@@ -180,6 +182,7 @@ def editar_partida_form(request: Request, partida_id: int, db: Session = Depends
 def atualizar_partida(
     request: Request,
     partida_id: int,
+    player_name: str = Form(...),
     category: str = Form(...),
     stage: str = Form(...),
     our_set1: int = Form(...),
@@ -204,6 +207,7 @@ def atualizar_partida(
         if our_set3 > opp_set3: our_total += 1
         else: opp_total += 1
 
+    partida.player_name = player_name
     partida.category = category
     partida.stage = stage
     partida.our_score = our_total

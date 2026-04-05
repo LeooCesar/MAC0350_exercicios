@@ -14,6 +14,7 @@ class Match(Base):
 
     id = Column(Integer, primary_key=True, index=True)
     championship_id = Column(Integer, ForeignKey("championships.id"), nullable=False)
+    player_name = Column(String)
     category = Column(String, nullable=False) # Ex: "Dupla Mista", "Dupla Masculina"
     stage = Column(String, nullable=False)    # Ex: "Fase de Grupos", "Quartos de Final"
     our_score = Column(Integer, nullable=False) # Placar em sets (Ex: 2 x 1)

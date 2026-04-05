@@ -36,6 +36,7 @@
         </div>
 
         <div style="display: flex; gap: 10px; margin-top: 15px;">
+            <input type="text" name="player_name" value="{{ partida.player_name }}" required>
             <input type="text" name="partner" value="{{ partida.partner if partida.partner else '' }}" placeholder="Sua Dupla">
             <input type="text" name="opponents" value="{{ partida.opponents }}" required>
         </div>
